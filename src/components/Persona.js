@@ -1,0 +1,35 @@
+import React from 'react'
+import { useParams } from 'react-router-dom'
+
+export const Persona = () => {
+
+  // Valores por defecto en parametros opcionales
+  // let {nombre="Washington", apellido="Nieto"} = useParams();
+
+  const {nombre, apellido} = useParams();
+
+  const navegar = useNavigate();
+
+  const enviar = (e) => {
+    e.preventDefault();
+    let nombre = e.target.nombre.value;
+    let apellido = e.target.apellido.value;
+
+
+  };
+
+  return (
+    <div>
+      {!nombre && <h1>No hay ninguna persona que mostrar</h1>}
+      {nombre && <h1>Página de persona: {nombre} {apellido}</h1>}
+      <p>Esta en la página de persona</p>
+
+      <form onSubmit = {enviar}>
+        <input type="text" name="nombre" />
+        <input type="text" name="apellido" />
+        <input type="submit" name="enviar" value="Enviar" />
+      </form>
+
+    </div>
+  )
+}
